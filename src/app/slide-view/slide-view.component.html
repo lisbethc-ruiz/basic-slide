@@ -1,0 +1,6 @@
+<div class="slide-container">
+    <ng-container *ngFor="let item of sections">
+        <div [class]="item.visible ? 'slide slide-visible' : 'slide slide-hidden'" [innerHTML]="item.content">
+        </div>
+    </ng-container>
+</div>
