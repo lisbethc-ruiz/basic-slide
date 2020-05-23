@@ -16,7 +16,8 @@ body {
 }
 
 .slide-container>* {
-    padding-left: 10px;
+    padding-left: 20px;
+    padding-top: 10px;
 }
 
 div.slide {
@@ -41,14 +42,14 @@ div.slide-hidden {
     opacity: 0;
 }
 
-div.slide-visible> ::ng-deep blockquote,
-div.slide-visible>::ng-deep ol>::ng-deep li> ::ng-deep blockquote {
+div.slide-visible>*> ::ng-deep blockquote,
+div.slide-visible>*>::ng-deep ol>::ng-deep li> ::ng-deep blockquote {
     padding: 1px 0px 1px 15px;
     font-size: 15px;
     border-left: 5px solid #cccc;
 }
 
-div.slide-visible> ::ng-deep p a {
+div.slide-visible>*> ::ng-deep p a {
     text-decoration: none;
     font-weight: bold;
 }
@@ -56,4 +57,37 @@ div.slide-visible> ::ng-deep p a {
 div.slide-visible> ::ng-deep p a:hover {
     text-decoration: underline;
     font-weight: bold;
+}
+
+.slideActions {
+    right: 20px;
+    top: 10px;
+    position: absolute;
+}
+
+.pageNumber {
+    right: 30px;
+    bottom: 30px;
+    position: absolute;
+}
+
+.btnArrow {
+    border-radius: 2px;
+    margin-right: 5px;
+    border: 1px solid #aaaaaa;
+    background-color: #eeeeee;
+    color: #1a1d1d;
+    cursor: pointer;
+}
+
+.btnArrow:hover {
+    font-weight: bold;
+    background-color: darkgray;
+    color: black;
+}
+
+.btnArrow:disabled {
+    cursor: initial;
+    color: #cccccc;
+    background-color: #eeeeee;
 }

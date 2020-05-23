@@ -1,6 +1,14 @@
 <div class="slide-container">
-    <ng-container *ngFor="let item of sections">
-        <div [class]="item.visible ? 'slide slide-visible' : 'slide slide-hidden'" [innerHTML]="item.content">
+    <ng-container *ngFor="let item of sections; let i=index;">
+        <div [class]="item.visible ? 'slide slide-visible' : 'slide slide-hidden'">
+            <div [innerHTML]="item.content"></div>
+            <div class="slideActions">
+                <button class="btnArrow" title="Previous Slide" [disabled]="i === 0 ? 'disabled' : ''" (click)="goUp(event)">&uarr;</button>
+                <button class="btnArrow" title="Next Slide" [disabled]="i === (sections.length - 1)  ? 'disabled' : ''" (click)="goDown(event)">&darr;</button>
+            </div>
+            <div class="pageNumber">
+                <span>{{ i + 1 }} / {{ sections.length }}</span>
+            </div>
         </div>
     </ng-container>
 </div>
