@@ -1,0 +1,15 @@
+<div class="slide-container">
+    <ng-container *ngFor="let item of sections; let i=index;">
+        <div [class]="item.visible ? 'slide slide-visible' : 'slide slide-hidden'">
+            <div [innerHTML]="item.content"></div>
+            <div class="slide-actions">
+                <button class="btn" (click)="listPresentations()" title="Go to Presentations List">Home</button>
+                <button class="btn-arrow" title="Previous Slide" [disabled]="i === 0 ? 'disabled' : ''" (click)="goUp(event)">&uarr;</button>
+                <button class="btn-arrow" title="Next Slide" [disabled]="i === (sections.length - 1)  ? 'disabled' : ''" (click)="goDown(event)">&darr;</button>
+            </div>
+            <div class="page-number">
+                <span>{{ i + 1 }} / {{ sections.length }}</span>
+            </div>
+        </div>
+    </ng-container>
+</div>

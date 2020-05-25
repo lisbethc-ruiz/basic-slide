@@ -1,0 +1,23 @@
+<div class="main-container">
+    <div>
+        <div class="btn-container">
+            <button class="btn btn-add" (click)="new()" title="New Presentation">+ New</button>
+        </div>
+        <div class="page-title">
+            <h1>Presentations available</h1>
+        </div>
+    </div>
+    <div class="list-container">
+        <ng-container *ngFor="let item of presentations">
+            <div class="card" (click)="view(item)">
+                <div class="actions">
+                    <button class="btn btn-view" (click)="view(item)">View</button>
+                    <button class="btn btn-edit" (click)="edit(item)">Edit</button>
+                </div>
+                <div class="info">
+                    <span>{{item.name}}</span>
+                </div>
+            </div>
+        </ng-container>
+    </div>
+</div>

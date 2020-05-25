@@ -1,28 +1,54 @@
 import { Component, OnInit, ElementRef, HostListener, ChangeDetectorRef } from '@angular/core';
-import { FileManagementService } from '../services/file-management.service';
+import { PresentationService } from '../services/presentation.service';
 import * as remark from 'remark';
 import * as html from 'remark-html';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
-  selector: 'app-slide-view',
-  templateUrl: './slide-view.component.html',
-  styleUrls: ['./slide-view.component.scss']
+  selector: 'app-presentation-view',
+  templateUrl: './presentation-view.component.html',
+  styleUrls: ['./presentation-view.component.scss']
 })
-export class SlideViewComponent implements OnInit {
+export class PresentationViewComponent implements OnInit {
   sections: {
     visible: boolean,
     content: string
   }[];
+  sub: any;
+  name: string;
 
-  constructor(private filemgmt: FileManagementService, private ref: ChangeDetectorRef) { }
+  constructor(
+    private router: Router,    
+    private activatedRoute: ActivatedRoute,
+    private presentationService: PresentationService) { }
 
   ngOnInit()
   {
-    this.loadFile();
+    this.sub = this.activatedRoute.params.subscribe(params => {
+      this.name = params['name'];
+      this.loadFile();
+   });
+   
   }
 
+  ngOnDestroy(): void {
+    if(this.sub)
+    {
+      this.sub.unsubscribe();
+    }
+   }
+ 
+   listPresentations()
+   {
+     this.router.navigate(
+       ['/'],
+       {
+          relativeTo: this.activatedRoute
+       });
+   }
+  
   loadFile() {
-    this.filemgmt.getFile('Test1.md').subscribe(data => {
+    this.presentationService.getPresentation(this.name).then(data => {
       const info = remark()
                   .use(html)
                   .processSync(data).toString();
@@ -62,7 +88,7 @@ export class SlideViewComponent implements OnInit {
   @HostListener('mousewheel', ['$event'])
   @HostListener('DOMMouseScroll', ['$event'])
   @HostListener('onmousewheel', ['$event'])
-  MouseWheel(event) {
+  mouseWheel(event) {
     const isUp = event.wheelDelta && event.wheelDelta > 0;
     if (isUp) {
       this.goUp(event);

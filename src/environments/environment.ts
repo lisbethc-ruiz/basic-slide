@@ -4,6 +4,7 @@
 
 export const environment = {
   production: false,
+  urlServerAPI: 'http://localhost:3000/',
   urlFiles : 'http://localhost/MarkdownFiles/'
 };
 

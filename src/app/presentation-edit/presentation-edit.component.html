@@ -1,0 +1,29 @@
+<div>
+    <div class="btn-container">
+        <button class="btn" (click)="addSlide()" title="Add New Slide">Add Slide</button>
+        <button class="btn" (click)="deleteSlide()" title="Add Current Slide">Delete Slide</button>
+        <button class="btn" (click)="savePresentation()" title="Save Presentation">Save</button>
+        <button class="btn" (click)="cancelChanges()" title="Cancel unsaved changes">Cancel</button>
+        <button class="btn" (click)="viewPresentation()" title="View Presentation" *ngIf="!new">View</button>
+        <button class="btn" (click)="listPresentations()" title="Go to Presentations List">Home</button>
+    </div>
+    <div class="page-title">
+        <h1 *ngIf="!new">{{name}}</h1>
+        <input *ngIf="new" [(ngModel)]="name" type="text" placeholder="Place Name Here" />
+    </div>
+</div>
+
+<div class="slide-container">
+    <ng-container *ngFor="let item of sections; let i=index;">
+        <div [class]="item.visible ? 'slide slide-visible' : 'slide slide-hidden'">
+            <textarea [(ngModel)]="item.content" placeholder="Start Editing Slide Here"></textarea>
+            <div class="slideActions">
+                <button class="btnArrow" title="Previous Slide" [disabled]="i === 0 ? 'disabled' : ''" (click)="goUp(event)">&uarr;</button>
+                <button class="btnArrow" title="Next Slide" [disabled]="i === (sections.length - 1)  ? 'disabled' : ''" (click)="goDown(event)">&darr;</button>
+            </div>
+            <div class="pageNumber">
+                <span>{{ i + 1 }} / {{ sections.length }}</span>
+            </div>
+        </div>
+    </ng-container>
+</div>

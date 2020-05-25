@@ -1,0 +1,133 @@
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #E9E9E9;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.page-title {
+    background-color: #35485f;
+    color: white;
+    height: 50px;
+    margin: 0;
+    border-bottom: 2px solid #999999;
+    padding-top: 10px;
+    padding-left: 10px;
+    margin-bottom: 5px;
+    h1 {
+        margin-block-start: 0em;
+        margin-block-end: 0em;
+        margin-inline-start: 0px;
+        margin-inline-end: 0px;
+    }
+}
+
+.btn-container {
+    top: 20px;
+    float: right;
+    position: relative;
+}
+
+.btn {
+    border-radius: 2px;
+    margin-right: 5px;
+    border: 1px solid #008CBA;
+    background-color: white;
+    color: #008CBA;
+    cursor: pointer;
+    top: 10px;
+    right: 0px;
+    float: right;
+    width: 50px;
+}
+
+.btn:hover {
+    font-weight: bold;
+}
+
+.slide-container {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    align-content: center;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+}
+
+.slide-container>* {
+    padding-left: 20px;
+    padding-top: 10px;
+}
+
+div.slide {
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    height: 95vh;
+    width: 97vw;
+    position: absolute;
+    break-after: page;
+    margin: 1vh;
+    padding: 0;
+}
+
+div.slide-visible {
+    display: block;
+    z-index: 2;
+    opacity: 1;
+     ::ng-deep blockquote {
+        padding: 1px 0px 1px 15px;
+        font-size: 15px;
+        border-left: 5px solid #cccc;
+    }
+     ::ng-deep p a {
+        text-decoration: none;
+        font-weight: bold;
+    }
+     ::ng-deep p a:hover {
+        text-decoration: underline;
+        font-weight: bold;
+    }
+}
+
+div.slide-hidden {
+    display: none;
+    z-index: 0;
+    opacity: 0;
+}
+
+.slide-actions {
+    right: 20px;
+    top: 10px;
+    position: absolute;
+}
+
+.page-number {
+    right: 30px;
+    bottom: 30px;
+    position: absolute;
+    font-size: 12pt;
+    color: #008CBA;
+}
+
+.btn-arrow {
+    border-radius: 2px;
+    margin-right: 5px;
+    border: 1px solid #008CBA;
+    background-color: white;
+    color: #008CBA;
+    cursor: pointer;
+}
+
+.btn-arrow:hover {
+    font-weight: bold;
+    background-color: rgb(150, 221, 245);
+    color: black;
+}
+
+.btn-arrow:disabled {
+    cursor: initial;
+    color: #cccccc;
+    background-color: #eeeeee;
+}
